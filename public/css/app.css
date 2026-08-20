@@ -1,0 +1,45 @@
+:root {
+    --uni-primary: #0d5c63;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.bg-primary,
+.btn-primary,
+.navbar.bg-primary {
+    background-color: var(--uni-primary) !important;
+    border-color: var(--uni-primary) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #094348 !important;
+    border-color: #094348 !important;
+}
+
+.text-primary {
+    color: var(--uni-primary) !important;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--uni-primary), #12868f);
+    color: #fff;
+}
+
+.card-stat .display-6 {
+    font-weight: 700;
+}
+
+.etape-numero {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--uni-primary);
+    color: #fff;
+    font-weight: 700;
+}
