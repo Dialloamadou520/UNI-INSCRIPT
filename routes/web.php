@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AcademicYearController as AdminAcademicYearController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\FiliereController as AdminFiliereController;
+use App\Http\Controllers\Admin\NiveauController as AdminNiveauController;
 use App\Http\Controllers\Admin\RegistrationController as AdminRegistrationController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\DashboardController;
@@ -52,6 +55,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('etudiants', AdminStudentController::class)
         ->parameters(['etudiants' => 'student'])
         ->except(['show']);
+
+    Route::resource('filieres', AdminFiliereController::class)->except(['show', 'create']);
+    Route::resource('niveaux', AdminNiveauController::class)->except(['show', 'create']);
+
+    Route::put('/annees/{annee}/activer', [AdminAcademicYearController::class, 'activer'])->name('annees.activer');
+    Route::resource('annees', AdminAcademicYearController::class)
+        ->parameters(['annees' => 'annee'])
+        ->except(['show', 'create']);
 });
 
 require __DIR__.'/auth.php';
