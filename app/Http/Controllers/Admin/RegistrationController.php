@@ -71,9 +71,9 @@ class RegistrationController extends Controller
                     ->when($request->filled('recherche'), function ($s) use ($request) {
                         $terme = '%'.$request->string('recherche')->trim().'%';
 
-                        $s->where(fn ($w) => $w->where('ine', 'like', $terme)
-                            ->orWhere('nom', 'like', $terme)
-                            ->orWhere('prenom', 'like', $terme));
+                        $s->where(fn ($w) => $w->whereLike('ine', $terme, caseSensitive: false)
+                            ->orWhereLike('nom', $terme, caseSensitive: false)
+                            ->orWhereLike('prenom', $terme, caseSensitive: false));
                     });
             })
             ->latest('date_soumission')
