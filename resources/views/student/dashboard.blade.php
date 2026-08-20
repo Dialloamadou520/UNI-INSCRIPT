@@ -53,9 +53,11 @@
                             </a>
                         @endif
                         <a href="{{ route('student.inscription.show') }}" class="btn btn-outline-secondary">Voir mon dossier</a>
-                        <button type="button" class="btn btn-outline-success" disabled>
-                            <i class="bi bi-download me-1"></i> Télécharger le reçu
-                        </button>
+                        @if ($registration?->statut === \App\Models\Registration::STATUT_VALIDEE)
+                            <a href="{{ route('student.inscription.recu') }}" class="btn btn-outline-success">
+                                <i class="bi bi-download me-1"></i> Télécharger le reçu
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
