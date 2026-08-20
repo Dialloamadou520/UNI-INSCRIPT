@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\RegistrationController as AdminRegistrationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
@@ -28,6 +29,10 @@ Route::middleware(['auth', 'etudiant'])->prefix('etudiant')->name('student.')->g
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/tableau-de-bord', AdminDashboardController::class)->name('dashboard');
+
+    Route::get('/inscriptions', [AdminRegistrationController::class, 'index'])->name('inscriptions.index');
+    Route::get('/inscriptions/{registration}', [AdminRegistrationController::class, 'show'])->name('inscriptions.show');
+    Route::put('/inscriptions/{registration}', [AdminRegistrationController::class, 'traiter'])->name('inscriptions.traiter');
 });
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,8 @@
 @section('contenu')
     <h1 class="h3 fw-bold mb-4">Tableau de bord</h1>
 
+    @include('admin.partials.nav')
+
     <div class="row g-3">
         @foreach ([
             ['libelle' => 'Étudiants', 'valeur' => $nombreEtudiants, 'icone' => 'people'],
@@ -23,5 +25,15 @@
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="card border-0 shadow-sm mt-4">
+        <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <h2 class="h6 mb-1">Demandes à traiter</h2>
+                <p class="text-muted small mb-0">Consultez les dossiers, validez, rejetez ou demandez une correction.</p>
+            </div>
+            <a href="{{ route('admin.inscriptions.index') }}" class="btn btn-primary">Gérer les inscriptions</a>
+        </div>
     </div>
 @endsection
