@@ -26,9 +26,9 @@ class StudentController extends Controller
             ->when($request->filled('recherche'), function ($q) use ($request) {
                 $terme = '%'.$request->string('recherche')->trim().'%';
 
-                $q->where(fn ($w) => $w->where('ine', 'like', $terme)
-                    ->orWhere('nom', 'like', $terme)
-                    ->orWhere('prenom', 'like', $terme));
+                $q->where(fn ($w) => $w->whereLike('ine', $terme, caseSensitive: false)
+                    ->orWhereLike('nom', $terme, caseSensitive: false)
+                    ->orWhereLike('prenom', $terme, caseSensitive: false));
             })
             ->orderBy('nom')
             ->paginate(15)
