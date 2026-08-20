@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     public const ROLE_ADMIN = 'admin';
 
@@ -34,7 +35,10 @@ class User extends Authenticatable
         return $this->hasOne(Student::class);
     }
 
-    public function notifications(): HasMany
+    /**
+     * Notifications métier affichées dans l'espace de l'utilisateur.
+     */
+    public function notificationsInternes(): HasMany
     {
         return $this->hasMany(Notification::class);
     }
