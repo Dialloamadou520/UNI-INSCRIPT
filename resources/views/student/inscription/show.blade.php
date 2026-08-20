@@ -52,6 +52,12 @@
                         <dt class="col-sm-4 text-muted">Année académique</dt><dd class="col-sm-8">{{ $anneeActive?->nom ?? '—' }}</dd>
                     </dl>
 
+                    @if ($registration?->statut === \App\Models\Registration::STATUT_VALIDEE)
+                        <a href="{{ route('student.inscription.recu') }}" class="btn btn-success mt-4">
+                            <i class="bi bi-download me-1"></i> Télécharger mon reçu d'inscription
+                        </a>
+                    @endif
+
                     @if ($registration === null || $registration->estModifiable())
                         <a href="{{ route('student.inscription.edit') }}" class="btn btn-primary mt-4">
                             {{ $registration === null ? 'Compléter et soumettre mon dossier' : 'Modifier mon dossier' }}
