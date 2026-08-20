@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\RegistrationController as AdminRegistrationController;
+use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
@@ -33,6 +34,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/inscriptions', [AdminRegistrationController::class, 'index'])->name('inscriptions.index');
     Route::get('/inscriptions/{registration}', [AdminRegistrationController::class, 'show'])->name('inscriptions.show');
     Route::put('/inscriptions/{registration}', [AdminRegistrationController::class, 'traiter'])->name('inscriptions.traiter');
+
+    Route::get('/etudiants/importation', [AdminStudentController::class, 'importForm'])->name('etudiants.import');
+    Route::post('/etudiants/importation', [AdminStudentController::class, 'import'])->name('etudiants.import.store');
+    Route::get('/etudiants/modele', [AdminStudentController::class, 'modele'])->name('etudiants.modele');
+    Route::resource('etudiants', AdminStudentController::class)
+        ->parameters(['etudiants' => 'student'])
+        ->except(['show']);
 });
 
 require __DIR__.'/auth.php';
