@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+use App\Http\Controllers\Student\ProfileController as StudentProfileController;
+use App\Http\Controllers\Student\RegistrationController as StudentRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicPageController::class, 'accueil'])->name('accueil');
@@ -14,6 +16,14 @@ Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('
 
 Route::middleware(['auth', 'etudiant'])->prefix('etudiant')->name('student.')->group(function () {
     Route::get('/tableau-de-bord', StudentDashboardController::class)->name('dashboard');
+
+    Route::get('/inscription', [StudentRegistrationController::class, 'show'])->name('inscription.show');
+    Route::get('/inscription/dossier', [StudentRegistrationController::class, 'edit'])->name('inscription.edit');
+    Route::put('/inscription/dossier', [StudentRegistrationController::class, 'update'])->name('inscription.update');
+
+    Route::get('/profil', [StudentProfileController::class, 'edit'])->name('profil');
+    Route::put('/profil/contact', [StudentProfileController::class, 'updateContact'])->name('profil.contact');
+    Route::put('/profil/mot-de-passe', [StudentProfileController::class, 'updatePassword'])->name('profil.password');
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
