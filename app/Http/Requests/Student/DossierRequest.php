@@ -24,6 +24,9 @@ class DossierRequest extends FormRequest
             'adresse' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'string', 'max:30'],
             'email' => ['required', 'email', 'max:255'],
+            'tuteur_prenom' => ['nullable', 'string', 'max:255'],
+            'tuteur_nom' => ['nullable', 'string', 'max:255'],
+            'tuteur_telephone' => ['nullable', 'string', 'max:30'],
         ];
     }
 
@@ -37,6 +40,9 @@ class DossierRequest extends FormRequest
             'lieu_naissance' => 'lieu de naissance',
             'nationalite' => 'nationalité',
             'telephone' => 'téléphone',
+            'tuteur_prenom' => 'prénom du tuteur',
+            'tuteur_nom' => 'nom du tuteur',
+            'tuteur_telephone' => 'téléphone du tuteur',
         ];
     }
 }

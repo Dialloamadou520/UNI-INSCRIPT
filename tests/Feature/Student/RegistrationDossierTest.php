@@ -56,6 +56,27 @@ class RegistrationDossierTest extends TestCase
         ]);
     }
 
+    public function test_les_coordonnees_du_tuteur_sont_enregistrees(): void
+    {
+        AcademicYear::factory()->actif()->create();
+        $student = $this->etudiant();
+
+        $this->actingAs($student->user)
+            ->put(route('student.inscription.update'), $this->dossier() + [
+                'tuteur_prenom' => 'Fatou',
+                'tuteur_nom' => 'Ndiaye',
+                'tuteur_telephone' => '771111111',
+            ])
+            ->assertRedirect(route('student.inscription.show'));
+
+        $this->assertDatabaseHas('students', [
+            'id' => $student->id,
+            'tuteur_prenom' => 'Fatou',
+            'tuteur_nom' => 'Ndiaye',
+            'tuteur_telephone' => '771111111',
+        ]);
+    }
+
     public function test_le_dossier_incomplet_est_rejete_par_la_validation(): void
     {
         AcademicYear::factory()->actif()->create();

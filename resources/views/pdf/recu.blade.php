@@ -35,6 +35,9 @@
         <tr><th>Niveau</th><td>{{ $student->niveau?->nom ?? '—' }}</td></tr>
         <tr><th>Promotion</th><td>{{ $student->promotion ?? '—' }}</td></tr>
         <tr><th>Année académique</th><td>{{ $registration->academicYear?->nom ?? '—' }}</td></tr>
+        @if (filled($student->tuteur_nom_complet) || filled($student->tuteur_telephone))
+            <tr><th>Tuteur</th><td>{{ $student->tuteur_nom_complet ?: '—' }} {{ filled($student->tuteur_telephone) ? '('.$student->tuteur_telephone.')' : '' }}</td></tr>
+        @endif
         <tr><th>Date de validation</th><td>{{ $registration->date_validation?->format('d/m/Y à H:i') ?? '—' }}</td></tr>
     </table>
 

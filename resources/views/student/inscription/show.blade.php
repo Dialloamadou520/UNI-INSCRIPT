@@ -44,6 +44,12 @@
                         <dt class="col-sm-4 text-muted">Email</dt><dd class="col-sm-8">{{ $student->email ?? '—' }}</dd>
                     </dl>
 
+                    <h3 class="h6 text-muted text-uppercase mt-4">Tuteur</h3>
+                    <dl class="row small">
+                        <dt class="col-sm-4 text-muted">Nom et prénom</dt><dd class="col-sm-8">{{ $student->tuteur_nom_complet ?: '—' }}</dd>
+                        <dt class="col-sm-4 text-muted">Téléphone</dt><dd class="col-sm-8">{{ $student->tuteur_telephone ?? '—' }}</dd>
+                    </dl>
+
                     <h3 class="h6 text-muted text-uppercase mt-4">Informations académiques</h3>
                     <dl class="row small mb-0">
                         <dt class="col-sm-4 text-muted">Filière</dt><dd class="col-sm-8">{{ $student->filiere?->nom ?? '—' }}</dd>
