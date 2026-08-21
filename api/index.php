@@ -10,6 +10,7 @@ foreach ([
     '/tmp/storage/framework/cache',
     '/tmp/storage/framework/sessions',
     '/tmp/storage/logs',
+    '/tmp/storage/app/public',
 ] as $dossier) {
     if (! is_dir($dossier)) {
         mkdir($dossier, 0755, true);
