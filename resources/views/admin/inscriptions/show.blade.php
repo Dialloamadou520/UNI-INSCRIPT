@@ -29,6 +29,8 @@
                         <dt class="col-sm-4 text-muted">Adresse</dt><dd class="col-sm-8">{{ $student->adresse ?? '—' }}</dd>
                         <dt class="col-sm-4 text-muted">Téléphone</dt><dd class="col-sm-8">{{ $student->telephone ?? '—' }}</dd>
                         <dt class="col-sm-4 text-muted">Email</dt><dd class="col-sm-8">{{ $student->email ?? '—' }}</dd>
+                        <dt class="col-sm-4 text-muted">Tuteur</dt><dd class="col-sm-8">{{ $student->tuteur_nom_complet ?: '—' }}</dd>
+                        <dt class="col-sm-4 text-muted">Téléphone du tuteur</dt><dd class="col-sm-8">{{ $student->tuteur_telephone ?? '—' }}</dd>
                         <dt class="col-sm-4 text-muted">Filière</dt><dd class="col-sm-8">{{ $student->filiere?->nom ?? '—' }}</dd>
                         <dt class="col-sm-4 text-muted">Niveau</dt><dd class="col-sm-8">{{ $student->niveau?->nom ?? '—' }}</dd>
                         <dt class="col-sm-4 text-muted">Promotion</dt><dd class="col-sm-8">{{ $student->promotion ?? '—' }}</dd>

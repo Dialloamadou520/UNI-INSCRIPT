@@ -92,6 +92,37 @@
 
         <div class="card border-0 shadow-sm mb-3">
             <div class="card-body">
+                <h2 class="h6 text-muted text-uppercase mb-3">Tuteur / personne à contacter</h2>
+                <p class="text-muted small">Facultatif : utile si l'université doit joindre un proche.</p>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="tuteur_prenom" class="form-label">Prénom du tuteur</label>
+                        <input type="text" id="tuteur_prenom" name="tuteur_prenom"
+                               class="form-control @error('tuteur_prenom') is-invalid @enderror"
+                               value="{{ old('tuteur_prenom', $student->tuteur_prenom) }}">
+                        @error('tuteur_prenom')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tuteur_nom" class="form-label">Nom du tuteur</label>
+                        <input type="text" id="tuteur_nom" name="tuteur_nom"
+                               class="form-control @error('tuteur_nom') is-invalid @enderror"
+                               value="{{ old('tuteur_nom', $student->tuteur_nom) }}">
+                        @error('tuteur_nom')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tuteur_telephone" class="form-label">Téléphone du tuteur</label>
+                        <input type="text" id="tuteur_telephone" name="tuteur_telephone"
+                               class="form-control @error('tuteur_telephone') is-invalid @enderror"
+                               value="{{ old('tuteur_telephone', $student->tuteur_telephone) }}">
+                        @error('tuteur_telephone')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body">
                 <h2 class="h6 text-muted text-uppercase mb-3">Informations académiques</h2>
                 <p class="text-muted small">Ces informations proviennent de la base officielle de l'université.</p>
                 <div class="row g-3">

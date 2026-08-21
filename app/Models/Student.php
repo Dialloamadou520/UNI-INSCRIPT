@@ -26,6 +26,9 @@ class Student extends Model
         'sexe',
         'nationalite',
         'adresse',
+        'tuteur_prenom',
+        'tuteur_nom',
+        'tuteur_telephone',
     ];
 
     protected function casts(): array
@@ -51,6 +54,11 @@ class Student extends Model
     public function registrations(): HasMany
     {
         return $this->hasMany(Registration::class);
+    }
+
+    public function getTuteurNomCompletAttribute(): string
+    {
+        return trim("{$this->tuteur_prenom} {$this->tuteur_nom}");
     }
 
     public function getNomCompletAttribute(): string
