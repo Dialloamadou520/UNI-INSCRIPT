@@ -24,6 +24,7 @@
         "LOG_CHANNEL": "stderr",
         "CACHE_STORE": "array",
         "SESSION_DRIVER": "database",
-        "FILESYSTEM_DISK": "local"
+        "FILESYSTEM_DISK": "local",
+        "LARAVEL_STORAGE_PATH": "/tmp/storage"
     }
 }
