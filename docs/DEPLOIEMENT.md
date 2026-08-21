@@ -91,6 +91,11 @@ PostgreSQL ; Supabase peut donc servir de base de données.
 
 5. Redéployer le projet Vercel pour que les variables soient prises en compte.
 
+> Ne déclarez dans Vercel que les variables ci-dessus. Recopier tout le
+> `.env.example` avec des valeurs vides provoque une erreur 500 : une variable
+> vide écrase la valeur par défaut de Laravel (par exemple
+> `APP_MAINTENANCE_DRIVER`, qui doit valoir `file`).
+
 Les limites de l'option C ci-dessous (pas de disque persistant, Artisan
 indisponible) s'appliquent également ici.
 
